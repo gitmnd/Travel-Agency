@@ -12,7 +12,7 @@ This project contains the source code for Travel agency. The App has been made u
 * [Configuarations](#configuarations)
 * [Usage](#usage)
 * [Build Information](#build-information)
-* [Development Hints - TECHNICAL](#development-hints-technical)
+
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ This project contains the source code for Travel agency. The App has been made u
 ## Build Information
 
 * tomcat7-maven-plugin is used to deploy in to server. More information in JenkinsFile.
-* Nexus as artifactory repository
+* Nexus/commented for URL replace as artifactory repository
 
 
 
