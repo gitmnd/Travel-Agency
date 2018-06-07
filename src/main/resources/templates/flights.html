@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking-Flights</title>
+
+    <!--/*/ <th:block th:include="fragments/commonscripts :: head"></th:block> /*/-->
+    <script>
+    function validateForm() {
+        var from = document.forms[0]["from"].value;
+        var to = document.forms[0]["to"].value;
+        if(from==""){
+            alert("From field in mandatory");
+            return false;
+        }
+         if(to==""){
+            alert("To field in mandatory");
+            return false;
+        }
+        return true;
+    }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+    <h2>Book Domestic and International flights</h2>
+    <div>
+
+        <form class="form-horizontal" th:object="${searchflight}" th:action="@{/searchflight}" method="post" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">From</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" th:field="*{from}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">To</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" th:field="*{to}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Depart</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" th:field="*{depart}"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Passenger | Class</label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" th:field="*{passengerclass}"/>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-danger">Search</button>
+            </div>
+            <br><br>
+            <div th:if="${not #lists.isEmpty(listflights)}">
+                <table class="table table-striped">
+                    <tr th:each="listflights : ${listflights}">
+                        <!--<span class="badge badge-warning">${listflights.from}</span>-->
+
+                        <td th:text="${listflights.from}"></td>
+                        <td th:text="${listflights.to}"></td>
+                        <td>
+                            <span th:text="${listflights.provider}" class="btn btn-info"/>
+                        </td>
+                        <td th:text="${listflights.route}"></td>
+                        <td th:text="${listflights.cost}"></td>
+                        <td th:text="${listflights.time}"></td>
+
+                        <td> <button type="button" class="btn btn-danger">Book</button></td>
+
+                    </tr>
+                </table>
+
+            </div>
+
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+pipeline {
+    agent {label 'master'}
+    options{
+        		buildDiscarder(logRotator(numToKeepStr:'10'))
+        }
+
+    stages{
+        stage('Compile'){
+            sh "mvn compile"
+        }
+
+        stage('Deploy the Application'){
+            sh "mvn tomcat7:redeploy -Dtomcat.username=admin -Dtomcat.password=admin -DskipTests=true"
+        }
+
+        stage('Test the Application'){
+            sh "mvn verify"
+        }
+    }
+    post {
+          success {
+    		  updateGitlabCommitStatus name: 'build', state: 'success'
+    		}
+    	  failure {
+    		  updateGitlabCommitStatus name: 'build', state: 'failed'
+    		}
+
+    	}
+
+}
