@@ -12,6 +12,7 @@ This project contains the source code for Travel agency. The App has been made u
 * [Configuarations](#configuarations)
 * [Usage](#usage)
 * [Build Information](#build-information)
+* [Local setup](#local-setup)
 
 
 ## Prerequisites
@@ -36,6 +37,32 @@ This project contains the source code for Travel agency. The App has been made u
 * tomcat7-maven-plugin is used to deploy in to server. More information in JenkinsFile.
 * Nexus/commented for URL replace as artifactory repository
 
+## Local setup
 
+```Ansible error ```
+
+To solve python lxml issue with maven_artifact module during playbook execution
+
+sudo apt-get install python-lxml
+
+``` Nexus Installation ```
+
+Nexus can be downloaded from below location
+
+https://help.sonatype.com/repomanager3/download
+
+Installing and Running Methods
+
+https://help.sonatype.com/repomanager3/installation/installation-methods
+
+To solve http address port binding issues during running sonatype,changes should go in the below file
+
+`nexus-default.properties`
+
+Default Nexus url : `localhost:8081`
+
+Execute Ansible playbook 
+
+`ansible-playbook main.yml --extra-vars 'ansible_become_pass=password'`
 
 	

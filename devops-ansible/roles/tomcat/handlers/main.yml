@@ -1,0 +1,6 @@
+---
+
+- name: Start tomcat server
+  command: nohup /usr/share/apache-tomcat-7.0.61/bin/startup.sh
+  become: True
+  become_method: sudo

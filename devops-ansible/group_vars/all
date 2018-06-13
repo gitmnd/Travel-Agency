@@ -1,0 +1,6 @@
+---
+
+# Nexus credentials
+  url: http://localhost:8081/repository/maven-snapshots/
+  username: admin
+  password: admin123

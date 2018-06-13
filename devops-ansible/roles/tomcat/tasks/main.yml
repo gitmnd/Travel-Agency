@@ -1,0 +1,61 @@
+---
+- name: add group "tomcat"
+  group: name=tomcat
+
+- name: add user "tomcat"
+  user: name=tomcat group=tomcat home=/usr/share/tomcat createhome=no
+  become: True
+  become_method: sudo
+
+- name: Download Tomcat
+  get_url:  
+    url: http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.61/bin/apache-tomcat-7.0.61.tar.gz
+    dest: /opt/apache-tomcat-7.0.61.tar.gz
+    mode: 0777
+
+- name: Unpack Tomcat
+  unarchive:
+    src: /opt/apache-tomcat-7.0.61.tar.gz
+    dest: /usr/share/
+    mode: 0777
+
+- name: Change ownership tomcat instalation
+  file:
+   path: /usr/share/apache-tomcat-7.0.61
+   owner: tomcat
+   group: tomcat
+   state: directory
+   recurse: yes
+   mode: 0777
+
+- name: Configure tomcat http port
+  template:
+    src: server.xml
+    dest: /usr/share/apache-tomcat-7.0.61/conf
+
+- name: Configure tomcat users
+  template:
+    src: tomcat-users.xml
+    dest: /usr/share/apache-tomcat-7.0.61/conf
+
+- name: start Tomcat
+  notify:
+   - Start tomcat server
+  debug:
+    msg: Tomcat server started !
+
+- name: Download artifact from repository and hot deploy to tomcat
+  maven_artifact:
+     group_id: Travel-Agency
+     artifact_id: Travel-Agency
+     extension: war
+     repository_url: "{{ url }}"
+     username: "{{ username }}"
+     password: "{{ password }}"
+     dest: /usr/share/apache-tomcat-7.0.61/webapps/Travle-Agency.war
+
+- name: Restart tomcat services
+  notify:
+   - Start tomcat server
+  debug:
+    msg: Tomcat services restarted post deployment

@@ -10,6 +10,7 @@ pipeline {
         }
 
         stage('Deploy the Application'){
+            sh "mvn deploy -DskipTests=true"
             sh "mvn tomcat7:redeploy -Dtomcat.username=admin -Dtomcat.password=admin -DskipTests=true"
         }
 

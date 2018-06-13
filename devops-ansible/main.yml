@@ -1,0 +1,8 @@
+---
+- name: main.yml called!
+  hosts: 127.0.0.1
+  become: yes
+  become_method: sudo
+ 
+  roles:
+    - tomcat

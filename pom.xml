@@ -200,23 +200,23 @@
 
     </build>
 
-    <!--<distributionManagement>-->
-        <!--<snapshotRepository>-->
-            <!--<id>maven-snapshots</id>-->
-            <!--<url></url>-->
-        <!--</snapshotRepository>-->
-    <!--</distributionManagement>-->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>TravelRepository</id>
+            <url>http://localhost:8082/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
-    <!--<repositories>-->
-        <!--<repository>-->
-            <!--<id>maven-snapshots</id>-->
-            <!--<name>maven-snapshots</name>-->
-            <!--<url></url>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
-    <!--</repositories>-->
+    <repositories>
+        <repository>
+            <id>TravelRepository</id>
+            <name>TravelRepository</name>
+            <url>http://localhost:8082/repository/maven-snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 
 </project>
