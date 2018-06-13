@@ -6,6 +6,8 @@ This project contains the source code for Travel agency. The App has been made u
 `Spring boot thymeleaf` -  UI
 `webjars,bootstrap` - UI
 
+This project also contains Ansible playbook code to create tomcat server,download artifact from nexus and deploy to tomcat.
+
 ## Table of Contents
 
 * [Prerequisites](#prerequisites)
