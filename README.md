@@ -15,7 +15,7 @@ This project also contains Ansible playbook code to create tomcat server,downloa
 * [Usage](#usage)
 * [Build Information](#build-information)
 * [Local setup](#local-setup)
-
+* [Docker](#Docker)
 
 ## Prerequisites
 
@@ -67,4 +67,9 @@ Execute Ansible playbook
 
 `ansible-playbook main.yml --extra-vars 'ansible_become_pass=password'`
 
+## Docker
 	
+Docker Build : `docker build -f Dockerfile . -t Travel-Agency`
+`docker ps -a`
+`docker image ls`
+Docker  Run : `docker run -p 7578:8080 e538ccd8351a` (port and Image id according to runtime)
