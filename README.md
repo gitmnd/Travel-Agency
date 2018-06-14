@@ -15,7 +15,7 @@ This project also contains Ansible playbook code to create tomcat server,downloa
 * [Usage](#usage)
 * [Build Information](#build-information)
 * [Local setup](#local-setup)
-* [Docker](#Docker)
+* [Docker](#docker)
 
 ## Prerequisites
 
