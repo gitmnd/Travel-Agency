@@ -70,6 +70,9 @@ Execute Ansible playbook
 ## Docker
 	
 Docker Build : `docker build -f Dockerfile . -t Travel-Agency`
+
 `docker ps -a`
+
 `docker image ls`
+
 Docker  Run : `docker run -p 7578:8080 e538ccd8351a` (port and Image id according to runtime)
